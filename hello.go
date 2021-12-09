@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func hola(a, b string) {
 	fmt.Println("\nHello, I'm " + a + " " + b)
@@ -12,10 +15,16 @@ func main() {
 	fmt.Println("Hello World!")
 
 	fmt.Print("My first name is ")
-	fmt.Scan(&name)
+	_, err := fmt.Scan(&name)
+	if err != nil {
+		os.Exit(1)
+	}
 
 	fmt.Print("and my last name is ")
-	fmt.Scan(&nameLast)
+	_, err = fmt.Scan(&nameLast)
+	if err != nil {
+		os.Exit(1)
+	}
 
 	hola(name, nameLast)
 }
